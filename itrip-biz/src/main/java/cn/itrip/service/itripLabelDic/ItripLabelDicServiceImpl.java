@@ -1,11 +1,10 @@
 package cn.itrip.service.itripLabelDic;
 import cn.itrip.mapper.itripLabelDic.ItripLabelDicMapper;
-import cn.itrip.pojo.ItripLabelDic;
+import cn.itrip.beans.pojo.ItripLabelDic;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

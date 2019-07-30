@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripAreaDic.ItripAreaDicMapper">
 
-    <select id="getItripAreaDicById" resultType="cn.itrip.pojo.ItripAreaDic" >
+    <select id="getItripAreaDicById" resultType="cn.itrip.beans.pojo.ItripAreaDic" >
         select
                 id as id,
                 name as name,
@@ -28,7 +28,7 @@
         </trim>
     </select>
 
-    <select id="getItripAreaDicListByMap" resultType="cn.itrip.pojo.ItripAreaDic" parameterType="java.util.Map">
+    <select id="getItripAreaDicListByMap" resultType="cn.itrip.beans.pojo.ItripAreaDic" parameterType="java.util.Map">
         select
                 id as id,
                 name as name,
@@ -140,7 +140,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripAreaDic" parameterType="cn.itrip.pojo.ItripAreaDic">
+    <insert id="insertItripAreaDic" parameterType="cn.itrip.beans.pojo.ItripAreaDic">
         insert into itrip_area_dic(
                         name,
                         areaNo,
@@ -171,7 +171,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripAreaDic" parameterType="cn.itrip.pojo.ItripAreaDic">
+    <update id="updateItripAreaDic" parameterType="cn.itrip.beans.pojo.ItripAreaDic">
         update itrip_area_dic
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

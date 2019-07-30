@@ -1,5 +1,5 @@
 package cn.itrip.mapper.itripUserLinkUser;
-import cn.itrip.pojo.ItripUserLinkUser;
+import cn.itrip.beans.pojo.ItripUserLinkUser;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;

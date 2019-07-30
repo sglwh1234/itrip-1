@@ -1,9 +1,8 @@
 package cn.itrip.service.itripTradeEnds;
-import cn.itrip.pojo.ItripTradeEnds;
+import cn.itrip.beans.pojo.ItripTradeEnds;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

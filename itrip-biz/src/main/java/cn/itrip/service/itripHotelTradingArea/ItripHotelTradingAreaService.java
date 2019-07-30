@@ -1,9 +1,8 @@
 package cn.itrip.service.itripHotelTradingArea;
-import cn.itrip.pojo.ItripHotelTradingArea;
+import cn.itrip.beans.pojo.ItripHotelTradingArea;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

@@ -1,5 +1,5 @@
 package cn.itrip.mapper.itripComment;
-import cn.itrip.pojo.ItripComment;
+import cn.itrip.beans.pojo.ItripComment;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;

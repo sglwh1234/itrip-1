@@ -1,9 +1,8 @@
 package cn.itrip.service.itripLabelDic;
-import cn.itrip.pojo.ItripLabelDic;
+import cn.itrip.beans.pojo.ItripLabelDic;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

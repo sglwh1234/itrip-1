@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripImage.ItripImageMapper">
 
-    <select id="getItripImageById" resultType="cn.itrip.pojo.ItripImage" >
+    <select id="getItripImageById" resultType="cn.itrip.beans.pojo.ItripImage" >
         select
                 id as id,
                 type as type,
@@ -23,7 +23,7 @@
         </trim>
     </select>
 
-    <select id="getItripImageListByMap" resultType="cn.itrip.pojo.ItripImage" parameterType="java.util.Map">
+    <select id="getItripImageListByMap" resultType="cn.itrip.beans.pojo.ItripImage" parameterType="java.util.Map">
         select
                 id as id,
                 type as type,
@@ -100,7 +100,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripImage" parameterType="cn.itrip.pojo.ItripImage">
+    <insert id="insertItripImage" parameterType="cn.itrip.beans.pojo.ItripImage">
         insert into itrip_image(
                         type,
                         targetId,
@@ -121,7 +121,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripImage" parameterType="cn.itrip.pojo.ItripImage">
+    <update id="updateItripImage" parameterType="cn.itrip.beans.pojo.ItripImage">
         update itrip_image
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

@@ -1,5 +1,5 @@
 package cn.itrip.mapper.itripHotelRoom;
-import cn.itrip.pojo.ItripHotelRoom;
+import cn.itrip.beans.pojo.ItripHotelRoom;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;

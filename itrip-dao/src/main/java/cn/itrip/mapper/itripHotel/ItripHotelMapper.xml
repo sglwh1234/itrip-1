@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripHotel.ItripHotelMapper">
 
-    <select id="getItripHotelById" resultType="cn.itrip.pojo.ItripHotel" >
+    <select id="getItripHotelById" resultType="cn.itrip.beans.pojo.ItripHotel" >
         select
                 id as id,
                 hotelName as hotelName,
@@ -34,7 +34,7 @@
         </trim>
     </select>
 
-    <select id="getItripHotelListByMap" resultType="cn.itrip.pojo.ItripHotel" parameterType="java.util.Map">
+    <select id="getItripHotelListByMap" resultType="cn.itrip.beans.pojo.ItripHotel" parameterType="java.util.Map">
         select
                 id as id,
                 hotelName as hotelName,
@@ -188,7 +188,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripHotel" parameterType="cn.itrip.pojo.ItripHotel">
+    <insert id="insertItripHotel" parameterType="cn.itrip.beans.pojo.ItripHotel">
         insert into itrip_hotel(
                         hotelName,
                         countryId,
@@ -231,7 +231,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripHotel" parameterType="cn.itrip.pojo.ItripHotel">
+    <update id="updateItripHotel" parameterType="cn.itrip.beans.pojo.ItripHotel">
         update itrip_hotel
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

@@ -1,11 +1,10 @@
 package cn.itrip.service.itripHotelTempStore;
 import cn.itrip.mapper.itripHotelTempStore.ItripHotelTempStoreMapper;
-import cn.itrip.pojo.ItripHotelTempStore;
+import cn.itrip.beans.pojo.ItripHotelTempStore;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

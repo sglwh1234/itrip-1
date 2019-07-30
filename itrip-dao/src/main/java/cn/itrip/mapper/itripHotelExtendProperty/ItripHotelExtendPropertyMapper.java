@@ -1,5 +1,5 @@
 package cn.itrip.mapper.itripHotelExtendProperty;
-import cn.itrip.pojo.ItripHotelExtendProperty;
+import cn.itrip.beans.pojo.ItripHotelExtendProperty;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;

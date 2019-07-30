@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripProductStore.ItripProductStoreMapper">
 
-    <select id="getItripProductStoreById" resultType="cn.itrip.pojo.ItripProductStore" >
+    <select id="getItripProductStoreById" resultType="cn.itrip.beans.pojo.ItripProductStore" >
         select
                 id as id,
                 productType as productType,
@@ -22,7 +22,7 @@
         </trim>
     </select>
 
-    <select id="getItripProductStoreListByMap" resultType="cn.itrip.pojo.ItripProductStore" parameterType="java.util.Map">
+    <select id="getItripProductStoreListByMap" resultType="cn.itrip.beans.pojo.ItripProductStore" parameterType="java.util.Map">
         select
                 id as id,
                 productType as productType,
@@ -92,7 +92,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripProductStore" parameterType="cn.itrip.pojo.ItripProductStore">
+    <insert id="insertItripProductStore" parameterType="cn.itrip.beans.pojo.ItripProductStore">
         insert into itrip_product_store(
                         productType,
                         productId,
@@ -111,7 +111,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripProductStore" parameterType="cn.itrip.pojo.ItripProductStore">
+    <update id="updateItripProductStore" parameterType="cn.itrip.beans.pojo.ItripProductStore">
         update itrip_product_store
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

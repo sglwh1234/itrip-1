@@ -1,9 +1,8 @@
 package cn.itrip.service.itripHotelOrder;
-import cn.itrip.pojo.ItripHotelOrder;
+import cn.itrip.beans.pojo.ItripHotelOrder;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

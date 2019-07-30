@@ -1,5 +1,5 @@
 package cn.itrip.mapper.itripImage;
-import cn.itrip.pojo.ItripImage;
+import cn.itrip.beans.pojo.ItripImage;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;

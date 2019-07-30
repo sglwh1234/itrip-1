@@ -1,11 +1,10 @@
 package cn.itrip.service.itripHotelExtendProperty;
 import cn.itrip.mapper.itripHotelExtendProperty.ItripHotelExtendPropertyMapper;
-import cn.itrip.pojo.ItripHotelExtendProperty;
+import cn.itrip.beans.pojo.ItripHotelExtendProperty;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

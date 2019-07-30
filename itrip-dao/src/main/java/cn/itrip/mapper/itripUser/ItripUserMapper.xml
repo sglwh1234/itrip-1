@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripUser.ItripUserMapper">
 
-    <select id="getItripUserById" resultType="cn.itrip.pojo.ItripUser" >
+    <select id="getItripUserById" resultType="cn.itrip.beans.pojo.ItripUser" >
         select
                 id as id,
                 userCode as userCode,
@@ -29,7 +29,7 @@
         </trim>
     </select>
 
-    <select id="getItripUserListByMap" resultType="cn.itrip.pojo.ItripUser" parameterType="java.util.Map">
+    <select id="getItripUserListByMap" resultType="cn.itrip.beans.pojo.ItripUser" parameterType="java.util.Map">
         select
                 id as id,
                 userCode as userCode,
@@ -148,7 +148,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripUser" parameterType="cn.itrip.pojo.ItripUser">
+    <insert id="insertItripUser" parameterType="cn.itrip.beans.pojo.ItripUser">
         insert into itrip_user(
                         userCode,
                         userPassword,
@@ -181,7 +181,7 @@
                     #{activated})
     </insert>
 
-    <update id="updateItripUser" parameterType="cn.itrip.pojo.ItripUser">
+    <update id="updateItripUser" parameterType="cn.itrip.beans.pojo.ItripUser">
         update itrip_user
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

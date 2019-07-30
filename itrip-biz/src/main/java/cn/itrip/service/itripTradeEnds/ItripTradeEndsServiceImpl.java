@@ -1,11 +1,10 @@
 package cn.itrip.service.itripTradeEnds;
 import cn.itrip.mapper.itripTradeEnds.ItripTradeEndsMapper;
-import cn.itrip.pojo.ItripTradeEnds;
+import cn.itrip.beans.pojo.ItripTradeEnds;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

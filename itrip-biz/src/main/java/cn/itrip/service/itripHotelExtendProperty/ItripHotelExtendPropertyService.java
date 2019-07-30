@@ -1,9 +1,8 @@
 package cn.itrip.service.itripHotelExtendProperty;
-import cn.itrip.pojo.ItripHotelExtendProperty;
+import cn.itrip.beans.pojo.ItripHotelExtendProperty;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

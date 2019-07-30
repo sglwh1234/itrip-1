@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripUserLinkUser.ItripUserLinkUserMapper">
 
-    <select id="getItripUserLinkUserById" resultType="cn.itrip.pojo.ItripUserLinkUser" >
+    <select id="getItripUserLinkUserById" resultType="cn.itrip.beans.pojo.ItripUserLinkUser" >
         select
                 id as id,
                 linkUserName as linkUserName,
@@ -24,7 +24,7 @@
         </trim>
     </select>
 
-    <select id="getItripUserLinkUserListByMap" resultType="cn.itrip.pojo.ItripUserLinkUser" parameterType="java.util.Map">
+    <select id="getItripUserLinkUserListByMap" resultType="cn.itrip.beans.pojo.ItripUserLinkUser" parameterType="java.util.Map">
         select
                 id as id,
                 linkUserName as linkUserName,
@@ -108,7 +108,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripUserLinkUser" parameterType="cn.itrip.pojo.ItripUserLinkUser">
+    <insert id="insertItripUserLinkUser" parameterType="cn.itrip.beans.pojo.ItripUserLinkUser">
         insert into itrip_user_link_user(
                         linkUserName,
                         linkIdCard,
@@ -131,7 +131,7 @@
                     #{linkIdCardType})
     </insert>
 
-    <update id="updateItripUserLinkUser" parameterType="cn.itrip.pojo.ItripUserLinkUser">
+    <update id="updateItripUserLinkUser" parameterType="cn.itrip.beans.pojo.ItripUserLinkUser">
         update itrip_user_link_user
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

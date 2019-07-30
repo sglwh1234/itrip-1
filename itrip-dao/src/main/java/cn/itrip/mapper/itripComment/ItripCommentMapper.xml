@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripComment.ItripCommentMapper">
 
-    <select id="getItripCommentById" resultType="cn.itrip.pojo.ItripComment" >
+    <select id="getItripCommentById" resultType="cn.itrip.beans.pojo.ItripComment" >
         select
                 id as id,
                 hotelId as hotelId,
@@ -33,7 +33,7 @@
         </trim>
     </select>
 
-    <select id="getItripCommentListByMap" resultType="cn.itrip.pojo.ItripComment" parameterType="java.util.Map">
+    <select id="getItripCommentListByMap" resultType="cn.itrip.beans.pojo.ItripComment" parameterType="java.util.Map">
         select
                 id as id,
                 hotelId as hotelId,
@@ -180,7 +180,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripComment" parameterType="cn.itrip.pojo.ItripComment">
+    <insert id="insertItripComment" parameterType="cn.itrip.beans.pojo.ItripComment">
         insert into itrip_comment(
                         hotelId,
                         productId,
@@ -221,7 +221,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripComment" parameterType="cn.itrip.pojo.ItripComment">
+    <update id="updateItripComment" parameterType="cn.itrip.beans.pojo.ItripComment">
         update itrip_comment
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

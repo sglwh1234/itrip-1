@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripHotelExtendProperty.ItripHotelExtendPropertyMapper">
 
-    <select id="getItripHotelExtendPropertyById" resultType="cn.itrip.pojo.ItripHotelExtendProperty" >
+    <select id="getItripHotelExtendPropertyById" resultType="cn.itrip.beans.pojo.ItripHotelExtendProperty" >
         select
                 id as id,
                 hotelId as hotelId,
@@ -21,7 +21,7 @@
         </trim>
     </select>
 
-    <select id="getItripHotelExtendPropertyListByMap" resultType="cn.itrip.pojo.ItripHotelExtendProperty" parameterType="java.util.Map">
+    <select id="getItripHotelExtendPropertyListByMap" resultType="cn.itrip.beans.pojo.ItripHotelExtendProperty" parameterType="java.util.Map">
         select
                 id as id,
                 hotelId as hotelId,
@@ -84,7 +84,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripHotelExtendProperty" parameterType="cn.itrip.pojo.ItripHotelExtendProperty">
+    <insert id="insertItripHotelExtendProperty" parameterType="cn.itrip.beans.pojo.ItripHotelExtendProperty">
         insert into itrip_hotel_extend_property(
                         hotelId,
                         extendPropertyId,
@@ -101,7 +101,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripHotelExtendProperty" parameterType="cn.itrip.pojo.ItripHotelExtendProperty">
+    <update id="updateItripHotelExtendProperty" parameterType="cn.itrip.beans.pojo.ItripHotelExtendProperty">
         update itrip_hotel_extend_property
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

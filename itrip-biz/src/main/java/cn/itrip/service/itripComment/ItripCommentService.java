@@ -1,9 +1,8 @@
 package cn.itrip.service.itripComment;
-import cn.itrip.pojo.ItripComment;
+import cn.itrip.beans.pojo.ItripComment;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

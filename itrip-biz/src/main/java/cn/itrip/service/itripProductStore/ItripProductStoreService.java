@@ -1,9 +1,8 @@
 package cn.itrip.service.itripProductStore;
-import cn.itrip.pojo.ItripProductStore;
+import cn.itrip.beans.pojo.ItripProductStore;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
-import java.util.Map;
+
 import cn.itrip.common.Page;
 /**
 *

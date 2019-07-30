@@ -1,11 +1,10 @@
 package cn.itrip.service.itripImage;
 import cn.itrip.mapper.itripImage.ItripImageMapper;
-import cn.itrip.pojo.ItripImage;
+import cn.itrip.beans.pojo.ItripImage;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

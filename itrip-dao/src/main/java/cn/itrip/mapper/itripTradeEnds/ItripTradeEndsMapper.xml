@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripTradeEnds.ItripTradeEndsMapper">
 
-    <select id="getItripTradeEndsById" resultType="cn.itrip.pojo.ItripTradeEnds" >
+    <select id="getItripTradeEndsById" resultType="cn.itrip.beans.pojo.ItripTradeEnds" >
         select
                 id as id,
                 orderNo as orderNo,
@@ -17,7 +17,7 @@
         </trim>
     </select>
 
-    <select id="getItripTradeEndsListByMap" resultType="cn.itrip.pojo.ItripTradeEnds" parameterType="java.util.Map">
+    <select id="getItripTradeEndsListByMap" resultType="cn.itrip.beans.pojo.ItripTradeEnds" parameterType="java.util.Map">
         select
                 id as id,
                 orderNo as orderNo,
@@ -52,7 +52,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripTradeEnds" parameterType="cn.itrip.pojo.ItripTradeEnds">
+    <insert id="insertItripTradeEnds" parameterType="cn.itrip.beans.pojo.ItripTradeEnds">
         insert into itrip_trade_ends(
                         orderNo,
                         flag)
@@ -61,7 +61,7 @@
                     #{flag})
     </insert>
 
-    <update id="updateItripTradeEnds" parameterType="cn.itrip.pojo.ItripTradeEnds">
+    <update id="updateItripTradeEnds" parameterType="cn.itrip.beans.pojo.ItripTradeEnds">
         update itrip_trade_ends
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">

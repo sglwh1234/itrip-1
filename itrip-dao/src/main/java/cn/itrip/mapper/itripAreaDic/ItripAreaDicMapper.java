@@ -1,5 +1,5 @@
 package cn.itrip.mapper.itripAreaDic;
-import cn.itrip.pojo.ItripAreaDic;
+import cn.itrip.beans.pojo.ItripAreaDic;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;

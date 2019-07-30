@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itrip.mapper.itripLabelDic.ItripLabelDicMapper">
 
-    <select id="getItripLabelDicById" resultType="cn.itrip.pojo.ItripLabelDic" >
+    <select id="getItripLabelDicById" resultType="cn.itrip.beans.pojo.ItripLabelDic" >
         select
                 id as id,
                 name as name,
@@ -24,7 +24,7 @@
         </trim>
     </select>
 
-    <select id="getItripLabelDicListByMap" resultType="cn.itrip.pojo.ItripLabelDic" parameterType="java.util.Map">
+    <select id="getItripLabelDicListByMap" resultType="cn.itrip.beans.pojo.ItripLabelDic" parameterType="java.util.Map">
         select
                 id as id,
                 name as name,
@@ -108,7 +108,7 @@
         </trim>
     </select>
 
-    <insert id="insertItripLabelDic" parameterType="cn.itrip.pojo.ItripLabelDic">
+    <insert id="insertItripLabelDic" parameterType="cn.itrip.beans.pojo.ItripLabelDic">
         insert into itrip_label_dic(
                         name,
                         value,
@@ -131,7 +131,7 @@
                     #{modifiedBy})
     </insert>
 
-    <update id="updateItripLabelDic" parameterType="cn.itrip.pojo.ItripLabelDic">
+    <update id="updateItripLabelDic" parameterType="cn.itrip.beans.pojo.ItripLabelDic">
         update itrip_label_dic
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
                     <if test="id != null and id!=''">
