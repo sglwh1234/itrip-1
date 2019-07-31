@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 /**
  * HtmlEncode防js注入公共类
  * @author bdqn_hl

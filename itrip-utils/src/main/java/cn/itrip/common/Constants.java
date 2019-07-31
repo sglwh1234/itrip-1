@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 /***
  * 常量类 放置一些常量

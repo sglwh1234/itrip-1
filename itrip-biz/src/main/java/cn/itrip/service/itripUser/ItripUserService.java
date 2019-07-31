@@ -1,9 +1,11 @@
 package cn.itrip.service.itripUser;
+
 import cn.itrip.beans.pojo.ItripUser;
+import cn.itrip.common.Page;
+
 import java.util.List;
 import java.util.Map;
 
-import cn.itrip.common.Page;
 /**
 *
 */
@@ -21,5 +23,5 @@ public interface ItripUserService {
 
     public Integer itriptxDeleteItripUserById(Long id)throws Exception;
 
-    public Page<ItripUser> queryItripUserPageByMap(Map<String,Object> param,Integer pageNo,Integer pageSize)throws Exception;
+    public Page<ItripUser> queryItripUserPageByMap(Map<String,Object> param, Integer pageNo, Integer pageSize)throws Exception;
 }

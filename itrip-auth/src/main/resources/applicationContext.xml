@@ -16,7 +16,7 @@
 	<context:component-scan base-package="cn.itrip.auth.service"/>
 	<context:annotation-config />
 	<context:property-placeholder location="classpath:database.properties,classpath:sms.properties"/>
-	<bean name="systemConfig" class="common.SystemConfig">
+	<bean name="systemConfig" class="cn.itrip.common.SystemConfig">
 		<property name="smsAccountSid" value="${sms.accountSid}" />
 		<property name="smsAuthToken" value="${sms.authToken}" />
 		<property name="smsAppID" value="${sms.appID}" />
@@ -24,7 +24,7 @@
 		<property name="smsServerPort" value="${sms.serverPort}" />
 	</bean>
 	<!-- JNDI获取数据源(使用dbcp连接池) -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" scope="singleton">
+<!--	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" scope="singleton">
 		<property name="driverClassName" value="${mysql.driver}"/>
 		<property name="url" value="${mysql.url}"/>
 		<property name="username" value="${mysql.user}"/>
@@ -42,8 +42,13 @@
 		<property name= "testOnReturn" value="false"/>
 		<property name= "validationQuery" value="select 1"/>
 		<property name= "numTestsPerEvictionRun" value="${mysql.maxActive}"/>
+	</bean>-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${mysql.driver}"/>
+		<property name="jdbcUrl" value="${mysql.url}"/>
+		<property name="user" value="${mysql.user}"/>
+		<property name="password" value="${mysql.password}"/>
 	</bean>
-
 	<!-- 事务管理   -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
@@ -87,11 +92,11 @@
 		<constructor-arg value="${redis.pass}"/>
 		<constructor-arg value="${redis.default.db}"/>
 	</bean>
-	<bean id="redisAPI" class="common.RedisAPI">
+	<bean id="redisAPI" class="cn.itrip.common.RedisAPI">
 		<property name="jedisPool" ref="jedisPool"/>
 	</bean>
 
-	<bean id="validationToken" class="common.ValidationToken">
+	<bean id="validationToken" class="cn.itrip.common.ValidationToken">
 		<property name="redisAPI" ref="redisAPI" />
 	</bean>
 </beans>

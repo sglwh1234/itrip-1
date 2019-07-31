@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import org.apache.log4j.Logger;

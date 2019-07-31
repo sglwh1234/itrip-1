@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 import cn.itrip.beans.dto.Dto;
 

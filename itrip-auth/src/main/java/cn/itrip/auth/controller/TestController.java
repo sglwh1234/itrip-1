@@ -1,8 +1,8 @@
 package cn.itrip.auth.controller;
 
 import cn.itrip.beans.dto.Dto;
-import common.DtoUtil;
-import common.ErrorCode;
+import cn.itrip.common.DtoUtil;
+import cn.itrip.common.ErrorCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

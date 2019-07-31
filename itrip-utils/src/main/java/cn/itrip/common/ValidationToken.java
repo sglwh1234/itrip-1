@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 import cn.itrip.beans.pojo.ItripUser;
 import com.alibaba.fastjson.JSONObject;

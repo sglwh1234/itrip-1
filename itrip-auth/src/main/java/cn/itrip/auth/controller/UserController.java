@@ -5,14 +5,14 @@ import cn.itrip.auth.service.UserService;
 import cn.itrip.beans.dto.Dto;
 import cn.itrip.beans.pojo.ItripUser;
 import cn.itrip.beans.vo.userinfo.ItripUserVO;
-import com.fasterxml.jackson.databind.util.BeanUtil;
-import common.DtoUtil;
-import common.EmptyUtils;
-import common.ErrorCode;
-import common.MD5;
-import org.springframework.context.annotation.Bean;
+import cn.itrip.common.DtoUtil;
+import cn.itrip.common.ErrorCode;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.regex.Pattern;
@@ -34,22 +34,15 @@ public class UserController {
         }
         //把vo转换成pojo
         ItripUser itripUser = new ItripUser();
-        itripUser.setUserCode(userCode);
-        itripUser.setUserPassword(itripUserVo.getUserPassword());
-        itripUser.setUserType(0);
-       //验证用户是否注册过
+        BeanUtils.copyProperties(itripUserVo,itripUser);
+
+       //添加用户
         try {
-            if(EmptyUtils.isEmpty(userService.findUserByUserCode(userCode))){
-                //没有注册过
-                itripUser.setUserPassword(MD5.getMd5(userCode,32));
-                int i=userService.createItripUser(itripUser);
-                if(i>0) {
-                    return DtoUtil.returnSuccess();
-                }else{
-                    return DtoUtil.returnFail("注册异常",ErrorCode.AUTH_UNKNOWN);
-                }
+            int i=userService.itripCreateItripUser(itripUser);
+            if(i>0) {
+                return DtoUtil.returnSuccess();
             }else{
-                return DtoUtil.returnFail("此手机号已注册",ErrorCode.AUTH_USER_ALREADY_EXISTS);
+                return DtoUtil.returnFail("已经注册过",ErrorCode.AUTH_USER_ALREADY_EXISTS);
             }
         }catch (Exception e){
             return DtoUtil.returnFail(e.getMessage(),ErrorCode.AUTH_UNKNOWN);
@@ -68,7 +61,16 @@ public class UserController {
     @RequestMapping(value = "/validatephone",method = RequestMethod.PUT)
     public @ResponseBody Dto validCode(@RequestParam(required = true) String user, @RequestParam(required = true)  String code){
 
-        return  null;
+        try {
+            if (userService.validatePhone(user,code)) {
+                return DtoUtil.returnSuccess("验证成功");
+            }else{
+                return DtoUtil.returnSuccess("验证失败");
+            }
+        } catch (Exception e) {
+//            e.printStackTrace();
+            return DtoUtil.returnSuccess(e.getMessage(),ErrorCode.AUTH_UNKNOWN);
+        }
     }
 
 

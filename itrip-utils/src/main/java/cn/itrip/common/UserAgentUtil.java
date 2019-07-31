@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 import cz.mallat.uasparser.OnlineUpdater;
 import cz.mallat.uasparser.UASparser;

@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

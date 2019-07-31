@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 /**
  * 系统错误编码，根据业务定义如下

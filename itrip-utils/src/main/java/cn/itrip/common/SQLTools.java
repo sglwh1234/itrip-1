@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 /**
  * mybatis 防sql注入类 SQLTools
  * @author bdqn_hl

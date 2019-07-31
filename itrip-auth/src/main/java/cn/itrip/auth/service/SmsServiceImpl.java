@@ -1,7 +1,7 @@
 package cn.itrip.auth.service;
 
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
-import common.SystemConfig;
+import cn.itrip.common.SystemConfig;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

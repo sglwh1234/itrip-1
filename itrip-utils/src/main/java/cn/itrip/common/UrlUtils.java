@@ -1,4 +1,4 @@
-package common;
+package cn.itrip.common;
 
 import java.io.BufferedReader;
 import java.io.IOException;
