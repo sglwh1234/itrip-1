@@ -10,4 +10,7 @@ public interface UserService {
 
     boolean validatePhone(String user, String code) throws Exception;
 
+    //用户名密码验证
+    ItripUser login(String userCode,String password) throws  Exception;
+
 }

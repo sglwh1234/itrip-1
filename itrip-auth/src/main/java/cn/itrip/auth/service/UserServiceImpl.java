@@ -1,5 +1,6 @@
 package cn.itrip.auth.service;
 
+import cn.itrip.auth.exception.AuthFailedException;
 import cn.itrip.beans.pojo.ItripUser;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.MD5;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Resource
     private RedisAPI redisAPI;
 
-    //根据手机号查询用户
+    //根据userCode查询用户
     @Override
     public ItripUser findUserByUserCode(String phone) throws Exception{
         Map<String, Object> param=new HashMap<>();
@@ -73,6 +74,20 @@ public class UserServiceImpl implements UserService {
             }
         }
         return false;
+    }
+
+    @Override
+    public ItripUser login(String userCode, String password) throws Exception {
+        ItripUser user = this.findUserByUserCode(userCode);
+        //用户名密码验证
+        if (user == null||!password.equals(user.getUserPassword())) {
+            throw new AuthFailedException("用户密码密码错误，认证失败");
+        }
+        //未激活账户
+        if(user.getActivated()!=1){
+            throw new AuthFailedException("未激活用户，认证失败");
+        }
+        return user;
     }
 
 }

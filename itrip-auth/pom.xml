@@ -36,6 +36,7 @@
         <dependency>
             <groupId>com</groupId>
             <artifactId>CCP_REST_SMS_SDK_JAVA_v2.6.3r</artifactId>
+            <version>v2.6.3r</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/CCP_REST_SMS_SDK_JAVA_v2.6.3r.jar</systemPath>
         </dependency>
