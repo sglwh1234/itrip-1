@@ -90,4 +90,9 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public void vendorsCreateItripUser(ItripUser user) throws Exception {
+        itripUserMapper.insertItripUser(user);
+    }
+
 }
