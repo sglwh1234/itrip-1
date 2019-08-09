@@ -1,14 +1,14 @@
 package cn.itrip.service.itripTradeEnds;
-import cn.itrip.mapper.itripTradeEnds.ItripTradeEndsMapper;
 import cn.itrip.beans.pojo.ItripTradeEnds;
+import cn.itrip.common.Constants;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
+import cn.itrip.mapper.itripTradeEnds.ItripTradeEndsMapper;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import cn.itrip.common.Constants;
 @Service
 public class ItripTradeEndsServiceImpl implements ItripTradeEndsService {
 
@@ -28,12 +28,12 @@ public class ItripTradeEndsServiceImpl implements ItripTradeEndsService {
     }
 
     public Integer itriptxAddItripTradeEnds(ItripTradeEnds itripTradeEnds)throws Exception{
-            itripTradeEnds.setCreationDate(new Date());
+//            itripTradeEnds.setCreationDate(new Date());
             return itripTradeEndsMapper.insertItripTradeEnds(itripTradeEnds);
     }
 
     public Integer itriptxModifyItripTradeEnds(ItripTradeEnds itripTradeEnds)throws Exception{
-        itripTradeEnds.setModifyDate(new Date());
+//        itripTradeEnds.setModifyDate(new Date());
         return itripTradeEndsMapper.updateItripTradeEnds(itripTradeEnds);
     }
 
