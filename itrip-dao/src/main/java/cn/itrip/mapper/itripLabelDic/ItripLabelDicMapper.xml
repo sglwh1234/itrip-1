@@ -170,4 +170,17 @@
     <delete id="deleteItripLabelDicById" parameterType="Long">
         delete from itrip_label_dic where id = #{id}
     </delete>
+
+    <select id="getItripLabelDicListByHotelId" parameterType="Long" resultType="cn.itrip.beans.pojo.ItripLabelDic">
+        SELECT
+        *
+        FROM itrip_label_dic
+        WHERE id
+        IN(
+            SELECT f.`featureId`
+            FROM itrip_hotel_feature  f
+            WHERE f.`hotelId`=#{id}
+            );
+
+    </select>
 </mapper>

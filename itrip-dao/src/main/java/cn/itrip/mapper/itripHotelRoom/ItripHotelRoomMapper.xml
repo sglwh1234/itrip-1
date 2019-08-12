@@ -46,7 +46,7 @@
                 createdBy as createdBy,
                 modifyDate as modifyDate,
                 modifiedBy as modifiedBy
-        from itrip_hotel_room
+        from itrip_hotel_room room
         <trim prefix="where" prefixOverrides="and | or">
                     <if test="id != null and id!=''">
                         and id=#{id}
@@ -66,8 +66,8 @@
                     <if test="isHavingBreakfast != null and isHavingBreakfast!=''">
                         and isHavingBreakfast=#{isHavingBreakfast}
                     </if>
-                    <if test="payType != null and payType!=''">
-                        and payType=#{payType}
+                    <if test="payType != null and payType!='' and payType!=3">
+                        and ( payType=#{payType} or payType=3)
                     </if>
                     <if test="satisfaction != null and satisfaction!=''">
                         and satisfaction=#{satisfaction}
@@ -89,6 +89,20 @@
                     </if>
                     <if test="modifyDate != null and modifyDate!=''">
                         and modifyDate=#{modifyDate}
+                    </if>
+                    <if test="dateList !=null">
+                        and
+                        <foreach collection="dateList" item="item" open="(" separator="AND" close=")">
+                            (
+                            (SELECT store FROM itrip_hotel_temp_store s WHERE s.roomId=room.id AND s.hotelId=room.hotelId
+                            AND
+                            DATE_FORMAT(recordDate,'%Y-%m-%d') =DATE_FORMAT(#{item},'%Y-%m-%d'))>0
+                            or
+                            (SELECT store FROM itrip_hotel_temp_store s WHERE s.roomId=room.id AND s.hotelId=room.hotelId
+                            AND
+                            DATE_FORMAT(recordDate,'%Y-%m-%d') =DATE_FORMAT(#{item},'%Y-%m-%d'))is null
+                            )
+                        </foreach>
                     </if>
         </trim>
          order by creationDate desc

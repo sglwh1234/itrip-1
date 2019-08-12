@@ -1,19 +1,30 @@
 package cn.itrip.service.itripHotel;
-import cn.itrip.mapper.itripHotel.ItripHotelMapper;
+import cn.itrip.beans.pojo.ItripAreaDic;
 import cn.itrip.beans.pojo.ItripHotel;
+import cn.itrip.beans.pojo.ItripLabelDic;
+import cn.itrip.beans.vo.hotel.HotelVideoDescVO;
+import cn.itrip.common.Constants;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
+import cn.itrip.mapper.itripAreaDic.ItripAreaDicMapper;
+import cn.itrip.mapper.itripHotel.ItripHotelMapper;
+import cn.itrip.mapper.itripLabelDic.ItripLabelDicMapper;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import cn.itrip.common.Constants;
 @Service
 public class ItripHotelServiceImpl implements ItripHotelService {
 
     @Resource
     private ItripHotelMapper itripHotelMapper;
+    @Resource
+    private ItripAreaDicMapper itripAreaDicMapper;
+    @Resource
+    private ItripLabelDicMapper itripLabelDicMapper;
 
     public ItripHotel getItripHotelById(Long id)throws Exception{
         return itripHotelMapper.getItripHotelById(id);
@@ -51,6 +62,29 @@ public class ItripHotelServiceImpl implements ItripHotelService {
         List<ItripHotel> itripHotelList = itripHotelMapper.getItripHotelListByMap(param);
         page.setRows(itripHotelList);
         return page;
+    }
+
+    @Override
+    public HotelVideoDescVO getItripHotelVideoDesc(Long hotelId) throws Exception {
+        HotelVideoDescVO videoDescVO=new HotelVideoDescVO();
+        //酒店名称
+        String hotelName = itripHotelMapper.getItripHotelById(hotelId).getHotelName();
+        videoDescVO.setHotelName(hotelName);
+        //商圈名称
+        List<ItripAreaDic> areaDicList=itripAreaDicMapper.getItripAreaDicListByHotelId(hotelId);
+        List<String> areaNameList=new ArrayList<>();
+        for (ItripAreaDic areaDic : areaDicList) {
+            areaNameList.add(areaDic.getName());
+        }
+        videoDescVO.setTradingAreaNameList(areaNameList);
+        //酒店特色
+        List<ItripLabelDic> labelDicList=itripLabelDicMapper.getItripLabelDicListByHotelId(hotelId);
+        List<String> featureNameList=new ArrayList<>();
+        for (ItripLabelDic labelDic : labelDicList) {
+            featureNameList.add(labelDic.getName());
+        }
+        videoDescVO.setHotelFeatureList(featureNameList);
+        return videoDescVO;
     }
 
 }

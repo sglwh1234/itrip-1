@@ -1,9 +1,10 @@
 package cn.itrip.service.itripHotel;
 import cn.itrip.beans.pojo.ItripHotel;
+import cn.itrip.beans.vo.hotel.HotelVideoDescVO;
+import cn.itrip.common.Page;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.itrip.common.Page;
 /**
 *
 */
@@ -22,4 +23,10 @@ public interface ItripHotelService {
     public Integer itriptxDeleteItripHotelById(Long id)throws Exception;
 
     public Page<ItripHotel> queryItripHotelPageByMap(Map<String,Object> param,Integer pageNo,Integer pageSize)throws Exception;
+
+    /**
+     * 根据酒店id获取视频信息
+     * @return
+     */
+    HotelVideoDescVO getItripHotelVideoDesc(Long hotelId)throws  Exception;
 }

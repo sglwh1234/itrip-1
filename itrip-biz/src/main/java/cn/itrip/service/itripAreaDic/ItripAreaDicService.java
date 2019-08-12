@@ -1,9 +1,9 @@
 package cn.itrip.service.itripAreaDic;
 import cn.itrip.beans.pojo.ItripAreaDic;
+import cn.itrip.common.Page;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.itrip.common.Page;
 /**
 *
 */
@@ -22,4 +22,5 @@ public interface ItripAreaDicService {
     public Integer itriptxDeleteItripAreaDicById(Long id)throws Exception;
 
     public Page<ItripAreaDic> queryItripAreaDicPageByMap(Map<String,Object> param,Integer pageNo,Integer pageSize)throws Exception;
+
 }

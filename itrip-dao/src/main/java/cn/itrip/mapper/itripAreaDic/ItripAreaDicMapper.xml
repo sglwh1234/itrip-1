@@ -222,4 +222,16 @@
     <delete id="deleteItripAreaDicById" parameterType="Long">
         delete from itrip_area_dic where id = #{id}
     </delete>
+
+    <select id="getItripAreaDicListByHotelId" parameterType="Long" resultType="cn.itrip.beans.pojo.ItripAreaDic">
+        SELECT
+          *
+        FROM itrip_area_dic
+        WHERE id
+        IN(
+            SELECT t.`areaId`
+            FROM itrip_hotel_trading_area t
+            WHERE t.`hotelId`=#{id}
+            );
+    </select>
 </mapper>
