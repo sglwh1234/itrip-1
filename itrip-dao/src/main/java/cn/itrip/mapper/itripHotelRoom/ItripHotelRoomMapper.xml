@@ -93,7 +93,7 @@
                     <if test="dateList !=null">
                         and
                         <foreach collection="dateList" item="item" open="(" separator="AND" close=")">
-                            (
+
                             (SELECT store FROM itrip_hotel_temp_store s WHERE s.roomId=room.id
                             AND
                             DATE_FORMAT(recordDate,'%Y-%m-%d') =DATE_FORMAT(#{item},'%Y-%m-%d'))>0
@@ -101,7 +101,7 @@
                             (SELECT store FROM itrip_hotel_temp_store s WHERE s.roomId=room.id
                             AND
                             DATE_FORMAT(recordDate,'%Y-%m-%d') =DATE_FORMAT(#{item},'%Y-%m-%d'))is null
-                            )
+
                         </foreach>
                     </if>
         </trim>

@@ -1,14 +1,15 @@
 package cn.itrip.service.itripHotelTempStore;
-import cn.itrip.mapper.itripHotelTempStore.ItripHotelTempStoreMapper;
 import cn.itrip.beans.pojo.ItripHotelTempStore;
+import cn.itrip.common.Constants;
 import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
+import cn.itrip.mapper.itripHotelTempStore.ItripHotelTempStoreMapper;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import cn.itrip.common.Constants;
 @Service
 public class ItripHotelTempStoreServiceImpl implements ItripHotelTempStoreService {
 
@@ -51,6 +52,16 @@ public class ItripHotelTempStoreServiceImpl implements ItripHotelTempStoreServic
         List<ItripHotelTempStore> itripHotelTempStoreList = itripHotelTempStoreMapper.getItripHotelTempStoreListByMap(param);
         page.setRows(itripHotelTempStoreList);
         return page;
+    }
+
+    @Override
+    public List<ItripHotelTempStore> getItripHotelTempStoresByMap(Map<String, Object> map) throws Exception {
+
+        //调查存储过程，刷新实时库存表
+        itripHotelTempStoreMapper.flushStore(map);
+        //计算算库存数量
+       return itripHotelTempStoreMapper.getItripHotelTempStroes(map);
+
     }
 
 }

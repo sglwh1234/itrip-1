@@ -42,4 +42,27 @@ public class ValidationToken {
         return itripUser;
     }
 
+    /**
+     * 验证登录
+     * @param agent
+     * @param token
+     * @return
+     * @throws Exception
+     */
+    public boolean validate(String agent, String token) throws Exception {
+//        System.out.println("agent====="+agent);
+//        System.out.println("token====="+token);
+        if(EmptyUtils.isEmpty(token)){
+            throw new Exception("认证失败，无token信息");
+        }
+        String agentMD5 = token.split("-")[4];
+        if(!agentMD5.equals(MD5.getMd5(agent,6))){//客户端不是登录时的客户端了，认证失败
+            throw new Exception("token认证失败,不是登录的客户端");
+        }
+        if (!redisAPI.exist(token)) {
+            throw  new Exception("认证失败，未登录或token过期");
+        }
+        return true;
+    }
+
 }

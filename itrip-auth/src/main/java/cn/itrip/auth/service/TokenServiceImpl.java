@@ -5,6 +5,7 @@ import cn.itrip.beans.pojo.ItripUser;
 import cn.itrip.common.MD5;
 import cn.itrip.common.RedisAPI;
 import cn.itrip.common.UserAgentUtil;
+import cn.itrip.common.ValidationToken;
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ import java.util.Date;
 public class TokenServiceImpl implements TokenService {
     @Resource
     private RedisAPI redisAPI;
+    @Resource
+    private ValidationToken validationToken;
 
     @Override
     public String generateToken(String agent, ItripUser itripUser) throws Exception {
@@ -54,14 +57,14 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public boolean validate(String agent, String token) throws Exception {
-        String agentMD5 = token.split("-")[4];
+       /* String agentMD5 = token.split("-")[4];
         if(!agentMD5.equals(MD5.getMd5(agent,6))){//客户端不是登录时的客户端了，认证失败
             throw new TokenFailedException("token认证失败,不是登录的客户端");
         }
         if (!redisAPI.exist(token)) {
             throw  new TokenFailedException("认证失败，未登录或token过期");
-        }
-        return true;
+        }*/
+        return validationToken.validate(agent,token);
     }
 
     @Override
