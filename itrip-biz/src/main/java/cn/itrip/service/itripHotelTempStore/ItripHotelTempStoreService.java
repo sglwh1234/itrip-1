@@ -29,4 +29,11 @@ public interface ItripHotelTempStoreService {
      * @return
      */
     List<ItripHotelTempStore> getItripHotelTempStoresByMap(Map<String, Object> map) throws Exception;
+
+    /**
+     * 验证房间库存
+     * @param map
+     * @return  有or无
+     */
+    Boolean validateRoomStore(Map<String, Object> map) throws Exception;
 }

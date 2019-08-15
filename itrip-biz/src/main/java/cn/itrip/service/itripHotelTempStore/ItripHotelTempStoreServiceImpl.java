@@ -64,4 +64,13 @@ public class ItripHotelTempStoreServiceImpl implements ItripHotelTempStoreServic
 
     }
 
+    @Override
+    public Boolean validateRoomStore(Map<String, Object> map) throws Exception {
+        Integer store = this.getItripHotelTempStoresByMap(map).get(0).getStore();
+        Integer count = (Integer) map.get("count");
+        System.out.println("sore=="+store);
+        System.out.println("count=="+count);
+        return store >= count;
+    }
+
 }

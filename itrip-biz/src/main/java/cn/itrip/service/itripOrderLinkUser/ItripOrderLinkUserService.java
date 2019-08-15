@@ -1,9 +1,9 @@
 package cn.itrip.service.itripOrderLinkUser;
 import cn.itrip.beans.pojo.ItripOrderLinkUser;
+import cn.itrip.common.Page;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.itrip.common.Page;
 /**
 *
 */
@@ -22,4 +22,6 @@ public interface ItripOrderLinkUserService {
     public Integer itriptxDeleteItripOrderLinkUserById(Long id)throws Exception;
 
     public Page<ItripOrderLinkUser> queryItripOrderLinkUserPageByMap(Map<String,Object> param,Integer pageNo,Integer pageSize)throws Exception;
+
+
 }

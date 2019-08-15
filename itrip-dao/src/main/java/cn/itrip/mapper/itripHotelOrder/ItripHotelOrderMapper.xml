@@ -244,8 +244,9 @@
         </trim>
     </select>
 
-    <insert id="insertItripHotelOrder" parameterType="cn.itrip.beans.pojo.ItripHotelOrder">
+    <insert id="insertItripHotelOrder" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="cn.itrip.beans.pojo.ItripHotelOrder">
         insert into itrip_hotel_order(
+
                         userId,
                         orderType,
                         orderNo,

@@ -18,4 +18,9 @@ public interface ItripOrderLinkUserMapper {
 
 	public Integer deleteItripOrderLinkUserById(@Param(value = "id") Long id)throws Exception;
 
+	/**
+	 * 根据订单id删除入住人
+	 * @param orderId
+	 */
+    void deleteItripOrderLinkUserByOrderId(Long orderId)throws Exception;
 }
