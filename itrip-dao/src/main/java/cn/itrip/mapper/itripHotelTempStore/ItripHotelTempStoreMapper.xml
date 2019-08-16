@@ -198,4 +198,13 @@
 
     </select>
 
+    <update id="updateItripHotelTempStoreByMap" parameterType="map">
+        UPDATE itrip_hotel_temp_store
+        SET store=store-#{count}
+        WHERE roomId=#{roomId}
+              AND recordDate
+              BETWEEN DATE_FORMAT(#{startDate},'%Y-%m-%d')
+                    AND DATE_FORMAT(#{endDate},'%Y-%m-%d');
+
+    </update>
 </mapper>

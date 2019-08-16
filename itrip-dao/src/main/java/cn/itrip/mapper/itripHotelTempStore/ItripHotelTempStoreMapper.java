@@ -30,4 +30,10 @@ public interface ItripHotelTempStoreMapper {
 	 * @return
 	 */
 	List<ItripHotelTempStore> getItripHotelTempStroes(Map<String, Object> map);
+
+	/**
+	 * 修改订单状态之后修改实时库存表
+	 * @param map
+	 */
+    void updateItripHotelTempStoreByMap(Map<String, Object> map)throws Exception;
 }

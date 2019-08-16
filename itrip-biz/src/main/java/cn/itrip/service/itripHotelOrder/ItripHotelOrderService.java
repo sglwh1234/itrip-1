@@ -40,4 +40,14 @@ public interface ItripHotelOrderService {
      * @return  订单id
      */
     Long itriptxAddItripHotelOrder(ItripHotelOrder hotelOrder, List<ItripUserLinkUser> linkUsers) throws Exception;
+
+    /**
+     * 判断是否支持的支付类型
+     * @param orderId
+     * @return
+     */
+    Boolean getSupportPayType(Long orderId,Integer payType)throws Exception;
+
+
+    Boolean flushTempStore()throws Exception;
 }

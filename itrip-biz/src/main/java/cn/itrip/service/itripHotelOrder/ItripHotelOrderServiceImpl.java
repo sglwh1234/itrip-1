@@ -9,12 +9,14 @@ import cn.itrip.common.EmptyUtils;
 import cn.itrip.common.Page;
 import cn.itrip.mapper.itripHotelOrder.ItripHotelOrderMapper;
 import cn.itrip.mapper.itripHotelRoom.ItripHotelRoomMapper;
+import cn.itrip.mapper.itripHotelTempStore.ItripHotelTempStoreMapper;
 import cn.itrip.mapper.itripOrderLinkUser.ItripOrderLinkUserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,8 @@ public class ItripHotelOrderServiceImpl implements ItripHotelOrderService {
     private ItripHotelRoomMapper itripHotelRoomMapper;
     @Resource
     private ItripOrderLinkUserMapper itripOrderLinkUserMapper;
+    @Resource
+    private ItripHotelTempStoreMapper itripHotelTempStoreMapper;
 
     public ItripHotelOrder getItripHotelOrderById(Long id) throws Exception {
         return itripHotelOrderMapper.getItripHotelOrderById(id);
@@ -46,6 +50,15 @@ public class ItripHotelOrderServiceImpl implements ItripHotelOrderService {
     }
 
     public Integer itriptxModifyItripHotelOrder(ItripHotelOrder itripHotelOrder) throws Exception {
+        //修改实时库存表
+        ItripHotelOrder order = itripHotelOrderMapper.getItripHotelOrderById(itripHotelOrder.getId());
+        Map<String,Object> map=new HashMap<>();
+        map.put("roomId", order.getRoomId());
+        map.put("startDate",order.getCheckInDate());
+        map.put("endDate",order.getCheckOutDate());
+        map.put("count",order.getCount());
+        itripHotelTempStoreMapper.updateItripHotelTempStoreByMap(map);
+        //修改订单表
         itripHotelOrder.setModifyDate(new Date());
         return itripHotelOrderMapper.updateItripHotelOrder(itripHotelOrder);
     }
@@ -75,11 +88,12 @@ public class ItripHotelOrderServiceImpl implements ItripHotelOrderService {
     @Override
     public Long itriptxAddItripHotelOrder(ItripHotelOrder hotelOrder, List<ItripUserLinkUser> linkUsers) throws Exception {
         Long orderId = hotelOrder.getId();
+        Integer flag=0;
         if (orderId == null || orderId == 0) {
             //添加订单信息
             hotelOrder.setCreationDate(new Date());
             //插入订单
-            Integer id = itripHotelOrderMapper.insertItripHotelOrder(hotelOrder);
+            flag = itripHotelOrderMapper.insertItripHotelOrder(hotelOrder);
             //返回订单id
             orderId = hotelOrder.getId();
             System.out.println("orderId==========="+orderId);
@@ -87,12 +101,12 @@ public class ItripHotelOrderServiceImpl implements ItripHotelOrderService {
         } else {
             //TODO 刚生成订单（消耗库存），带着订单id返回修改，再来带着订单id请求（再次验证库存）有可能造成库存不足
             //修改订单信息
-            itripHotelOrderMapper.updateItripHotelOrder(hotelOrder);
+            flag=itripHotelOrderMapper.updateItripHotelOrder(hotelOrder);
             //删除订单联系人
             itripOrderLinkUserMapper.deleteItripOrderLinkUserByOrderId(orderId);
         }
         //添加订单联系人信息
-        if (linkUsers != null) {
+        if (flag>0&&linkUsers != null) {
             ItripOrderLinkUser orderLinkUser = null;
             for (ItripUserLinkUser linkUser : linkUsers) {
                 orderLinkUser = new ItripOrderLinkUser();
@@ -105,6 +119,21 @@ public class ItripHotelOrderServiceImpl implements ItripHotelOrderService {
             }
         }
         return orderId;
+    }
+
+    @Override
+    public Boolean getSupportPayType(Long orderId, Integer payType) throws Exception {
+        Long roomId = itripHotelOrderMapper.getItripHotelOrderById(orderId).getRoomId();
+        Integer oldPayType = itripHotelRoomMapper.getItripHotelRoomById(roomId).getPayType();
+        //old 3  ,2,1      11,10,01
+        //    1,2          11   01,10
+        return (payType&oldPayType)!=0;
+    }
+
+    @Override
+    public Boolean flushTempStore() throws Exception {
+        return itripHotelOrderMapper.updateOrderStatus()>0;
+
     }
 
 }
